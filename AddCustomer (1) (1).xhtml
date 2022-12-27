@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+<link rel="stylesheet" href="css/Add.css"></link>
+<h:form>
+<center>
+<h1>Customer Registration</h1>
+Customer Name:
+<h:inputText id="cust_name"  value="#{customer.cust_name}" required="true"
+				requiredMessage="Name is mandatory"/><br/><br/>
+				<h4><h:message for="cust_name" style="color :red;"/></h4>
+Customer city:
+<h:inputText  id="cust_city" value="#{customer.cust_city}"  required="true" requiredMessage="Enter city"/>
+<br/><br/>
+<h4><h:message for="cust_city" style="color : red;"/></h4>
+
+Customer Gender:
+<h:inputText id="cust_gender" value="#{customer.cust_gender}" required="true" requiredMessage="Enter Gender"/>
+<br/><br/>
+<h4><h:message for="cust_gender" style="color : red;"/></h4>
+Customer Phn Number:
+<h:inputText id="cust_phn_no"  value="#{customer.cust_phn_no}"  validator="#{customerDAO.validatePhnNo}" 
+ required="true" requiredMessage="Mobile No number is Mandatory"/>
+<br/><br/>
+<h4><h:message for="cust_phn_no" style="color : red;"/></h4>
+<br/><br/>
+Customer email:
+<h:inputText id="cust_email" value="#{customer.cust_email}" 
+			 validator="#{customerDAO.validateEmail}" required="true" requiredMessage="Enter Email Address"/>
+			<br/><br/>
+		<h4><h:message for="cust_email" style="color : red;"/></h4>
+		<br/><br/>
+Customer Password:
+<h:inputText id="cust_password" value="#{customer.cust_password}" validator="#{customerDAO.validatePassword}" 
+required="true" requiredMessage="password Required"/>
+<br></br>
+<h4><h:message for="cust_password" style="color : red;"/></h4>
+<br/><br/>
+Customer userName:
+<h:inputText id="cust_userName" value="#{customer.cust_userName}" required="true" requiredMessage="UserName is  Required"/>
+<br/><br/>
+<h4><h:message for="cust_userName" style="color : red;"/></h4>
+<br/><br/>
+<h:commandButton value="Save" action="#{customerDAO.addCustomer(customer)}"/>
+<h:link outcome="ShowCustomer" value="View Customer Records"/>
+</center>
+</h:form>
+</h:body>
+</html>
