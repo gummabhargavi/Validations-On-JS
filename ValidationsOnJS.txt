@@ -1,0 +1,445 @@
+VAlidations On JSTL Using Js
+_________________________________
+________________________________
+
+<script>
+$(function(){
+
+  $("#driver_name").blur(function(){                            //**Name**//
+		var regName = /^[a-zA-Z]+$/;
+		 var regName1 = /^[a-zA-Z]+ [a-zA-Z]+$/;
+	    var name = document.getElementById('driver_name').value;
+	    if(!regName.test(name) && !regName1.test(name)){
+		    alert("Invalid UserName");
+	    	
+	    	$("#driver_name").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	    }
+
+	});
+
+  $("#driver_lic_no").blur(function(){                           //**Licence Number**//
+		var regName = /^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}$/;       
+		 var regName1 = /^[a-zA-Z]+ [a-zA-Z]+$/;
+	    var name = document.getElementById('driver_lic_no').value;
+	    if(!regName.test(name) && !regName1.test(name)){
+	        alert("Enter Only Alpha-Numeric's");
+	    	$("#error").html("**Invalid liceNumber");
+	    	$("#driver_lic_no").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	    }
+
+	})
+
+	$("#contact_no").blur(function(){                      //** Phone Number**//
+		 var phoneno =/^\d{10}$/;
+	    var inputtxt = document.getElementById('contact_no').value;
+	    if(!phoneno.test(inputtxt)){
+		    alert("Invalid ContactNumber");
+	    	$("#error").html("**Invalid Contact Number");
+	    	$("#contact_no").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	        
+	    }
+})
+	});
+</script>
+-------------------------
+--------------------------
+<script>
+$(function(){
+	$("#cpassword").blur(function(){                 //**Conformationpassword**//
+		var pss=$("#password").val();
+		var cpss=$("#cpassword").val();
+		
+		if(pss!==cpss){
+			$("#error").html("**Password not matched"); 
+			$("#password").val("");
+			$("#cpassword").val("");
+			var setInterval_ID = setInterval(my_alert_func, 6000);  
+		}
+	});
+	$("#fullname").blur(function(){                         //**NAMe**//
+		var regName = /^[a-zA-Z]+$/;
+		 var regName1 = /^[a-zA-Z]+ [a-zA-Z]+$/;
+	    var name = document.getElementById('fullname').value;
+	    if(!regName.test(name) && !regName1.test(name)){
+	    	$("#error").html("**Invalid User Name");
+	    	$("#fullname").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	    }
+
+	});
+
+	$("#contactno").blur(function(){                        //**MobileNo**//
+		 var phoneno =/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+	    var inputtxt = document.getElementById('contactno').value;
+	    if(!phoneno.test(inputtxt)){
+	    	$("#error").html("**Invalid Contact Number");
+	    	$("#contactno").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	        
+	    }
+
+	});
+
+	$("#emailaddress").blur(function(){                       //**Email**//
+		 const regex_pattern =/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		 var email_id = document.getElementById('emailaddress').value;
+		    if (!regex_pattern.test(email_id)) {
+		    	$("#error").html("**Invalid Email Address");
+		    	$("#emailaddress").val(""); 
+		    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+		       
+		    }
+
+	});
+
+	$("#password").blur(function(){                        //**password**//
+		var res;
+		 var str = document.getElementById('password').value;
+		 if (str.match(/[a-z]/g) && str.match(
+         /[A-Z]/g) && str.match(
+         /[0-9]/g) && str.match(
+         /[^a-zA-Z\d]/g) && str.length >=8 && str.length <=15){
+			 $("#error1").html("**Strong password");
+			 var setInterval_ID = setInterval(my_alert_func1, 10000); 
+			 }
+		 else
+	 		{
+		 		$("#error").html("**Invalid password  e.g Gau@12gau");
+			 $("#password").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 20000); 
+	        
+	        }
+
+
+	});
+
+	
+	
+	function my_alert_func()                  //**MessageDisplayTime**//
+	{
+		document.getElementById("error").innerHTML=null;
+		
+	}
+
+	function my_alert_func1()
+	{
+		document.getElementById("error1").innerHTML=null;
+		
+	}
+});
+</script>
+-----------------------
+------------------------
+
+                          JSF File VAlidation Using JS
+                        ____________________________________
+
+<script>
+  function validateEmail(form)                          //**MAil**//
+  {
+      var idstr=form["formname:emailaddress"].value;
+      var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+       if(idstr.match(mail))
+       {
+            return true;
+              }
+            else
+              {
+              alert("Invalid Mail..");
+              form["formname:emailaddress"].value=" ";
+              return false;
+              }
+
+  }
+
+
+  function validatephn(form)                     //**Phone**//
+  {
+	  
+      var idstr=form["formname:contactno"].value;
+      var mail = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+       if(idstr.match(mail))
+       {
+            return true;
+              }
+            else
+              {
+              alert("Invalid Phone No..");
+              form["formname:contactno"].value=" ";
+              return false;
+              }
+
+  }
+
+ function seat(form)                                    //**SeatNumber**//
+{
+    var idstr=form["formname:noOfSeats"].value;
+    var seatno = /^(?:[1-9]|0[1-9]|1[0-9]|20)$/	;
+     if(idstr.match(seatno))
+     {
+          return true;
+            }
+          else
+            {
+            alert("select correct seat no");
+            form["formname:noOfSeats"].value=" ";
+            return false;
+            }
+  
+}
+
+function phonenumber(form)                       //**Phone Number**//
+{
+    var idstr=form["formname:contact_no"].value;
+    var phoneno = /^\d{10}$/;
+     if(idstr.match(phoneno))
+     {
+          return true;
+            }
+          else
+            {
+            alert("Not a valid Phone Number");
+            form["formname:contact_no"].value=" ";
+            return false;
+            }
+  
+}
+
+
+</script>
+-------------------------------------------------------
+--------------------------------------------------------
+                 Example 
+                 -------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Bus Booking System</title>
+<ui:include src="Adminheader.xhtml"/> 
+  <script src="../js/jquery-3.5.1.js"></script>
+  <script src="../js/bootstrap.js"></script>
+<script>
+  function seat(form)
+{
+
+    var idstr=form["formname:noOfSeats"].value;
+    
+     if( 99>idstr)
+     {  if( idstr>12){
+    	 return true;
+         }
+     alert("select correct seat no");
+     form["formname:noOfSeats"].value=" ";
+	 return false;
+     
+            }
+          else
+            {
+            alert("select correct seat no");
+            form["formname:noOfSeats"].value=" ";
+            return false;
+            }
+  
+}
+
+   function busno(form)
+  {
+  	 
+  	var A=form["formname:busNo"].value;
+    var S =/^[A-Z0-9]+$/;
+     if(A.match(S))
+       {
+            return true;
+              }
+            else
+              {
+              alert("Give Correct Bus No");
+              form["formname:busNo"].value=" ";
+              return false;
+              } 
+  }
+  
+ </script>
+<style type="">
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
+
+</style>
+</head>
+<h:body>
+   <h3 class="text-center">Add Bus</h3>
+    <h:button outcome="ShowBus.xhtml?faces-redirect=true" value="Back" class="btn btn-success ml-5" type="button"/>
+   <h:form class="text text-center mt-5" id="formname">
+     Bus No :
+     <h:inputText value="#{bus.busNo}" id="busNo" required="true" 
+     requiredMessage="Bus No. is Mandatory" onblur="busno(this.form)"/> <br/><br/>
+     <h6><h:message for="busNo" style="color : red;"/></h6>
+     Bus Type :
+     <h:selectOneMenu value="#{bus.busType}" id="busType">
+  			 <f:selectItem itemValue="AC" itemLabel="AC"/>
+  			 <f:selectItem itemValue="NON_AC" itemLabel="NON_AC"/>
+   			 <f:selectItem itemValue="SLEEPER" itemLabel="SLEEPER"/>
+   			 <f:selectItem itemValue="SEATER" itemLabel="SEATER"/>
+	</h:selectOneMenu><br/><br/>
+	<h6><h:message for="busType" style="color : red;"/></h6>
+     <!-- <h:inputText value="" id="busType" /> <br/><br/> -->
+     ServiesType :
+       <h:selectOneMenu value="#{bus.serviesType}" id="serviesType">
+  			 <f:selectItem itemValue="REGULAR" itemLabel="REGULAR"/>
+  			 <f:selectItem itemValue="ALTERNATE_DAYS" itemLabel="ALTERNATE_DAYS"/>
+   			 <f:selectItem itemValue="WEEKEND" itemLabel="WEEKEND"/>
+   			 <f:selectItem itemValue="EVENT" itemLabel="EVENT"/>
+	</h:selectOneMenu><br/><br/>
+	<h6><h:message for="serviesType" style="color : red;"/></h6>
+     <!-- <h:inputText value="" id="serviesType"/> <br/><br/> -->
+     NoOfSeats :
+     <h:inputText value="#{bus.noOfSeats}" id="noOfSeats" required="true" onblur="seat(this.form)" requiredMessage="Number of Seats is Mandatory"/>  <br/><br/>
+     <h6><h:message for="noOfSeats" style="color : red;"/></h6>
+     <h:commandButton value="Save" class="btn btn-primary" action="#{busDAO.addBus(bus)}" />
+       
+   </h:form>
+</h:body>
+</html>
+---------------------------
+------------------------------
+                               JAVA DAO Validations
+                             ____________________________
+
+ public void validatePassword(FacesContext context, UIComponent comp,
+            Object value) {
+
+ 
+
+        System.out.println("inside validate method");
+
+ 
+
+        String mno = (String) value;
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+          boolean result=mno.matches(pattern);
+          if(result==false) {
+              ((UIInput) comp).setValid(false);
+
+ 
+
+                FacesMessage message = new FacesMessage(
+                        "invalid Password");
+                context.addMessage(comp.getClientId(context), message); 
+          }
+
+
+ 
+
+    }
+
+    public void validatePhnNo(FacesContext context, UIComponent comp,
+            Object value) {
+
+ 
+
+        System.out.println("inside validate method");
+
+ 
+
+        String mno = (String) value;
+        boolean flag=false;
+        if (mno.matches("\\d{10}"))  
+        { flag=true;}
+
+          if(flag==false) {
+              ((UIInput) comp).setValid(false);
+
+ 
+
+                FacesMessage message = new FacesMessage(
+                        "invalid ContactNumber");
+                context.addMessage(comp.getClientId(context), message); 
+          }
+
+    }
+    public void validateEmail(FacesContext context, UIComponent comp,
+            Object value) {
+
+ 
+
+        System.out.println("inside validate method");
+        //String mno = (String) value;
+        //String REGEX = 
+        //        "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";         
+        String mno = (String) value;
+        // boolean result=mno.matches(REGEX);
+        if (mno.indexOf('@')==-1) {
+            ((UIInput) comp).setValid(false);
+
+ 
+
+            FacesMessage message = new FacesMessage(
+                    "invalid Email");
+            context.addMessage(comp.getClientId(context), message);
+        }
+        if (mno.length() < 6) {
+            ((UIInput) comp).setValid(false);
+
+ 
+
+            FacesMessage message = new FacesMessage(
+                    "Minimum length of model number is 6");
+            context.addMessage(comp.getClientId(context), message);
+
+ 
+
+        }
+
+ 
+
+    }
+
+
+ public Boolean Validation(String UserName) {
+	 
+	 sessionFactory = SessionHelper.getConnection();
+	 Session session = sessionFactory.openSession();
+	 Criteria cr = session.createCriteria(User.class);
+	 cr.add(Restrictions.eq("username",UserName));
+	 List<User>userlist = cr.list();
+	 if( userlist.size()>0) {
+		 return true;
+	 }else {
+		 return false;
+	 }
+ }
+
+public void validateAge(FacesContext context, UIComponent comp,
+            Object value) {
+       System.out.println("inside validate method");
+  
+        Integer mno = (Integer)value;
+        System.out.println(mno);
+        if (mno>=99 || mno<=12) {
+           
+            System.out.println("run");
+           FacesMessage message = new FacesMessage(
+                    "Invalid Age");
+            context.addMessage(comp.getClientId(context), message);
+ 
+        }
+       
+    }
+
