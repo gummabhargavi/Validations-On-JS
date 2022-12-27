@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+
+<h:body>
+<h:outputText value="hello"/>
+	<h:form>
+			<center>
+                <h2><h:outputText value="Bus Records"/></h2>
+            </center>
+        <h:dataTable value="#{busDAO.showBus()}" var="e" border="3">
+        	    <h:column>
+                    <f:facet name="header">Bus Id</f:facet>
+                    <h:outputText value="#{e.bus_id}"/>
+                </h:column>
+                        <h:column>
+                    <f:facet name="header">Bus No</f:facet>
+                    <h:outputText value="#{e.bus_no}"/>
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">Bus Type</f:facet>
+                    <h:outputText value="#{e.type_of_bus}"/>
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">Bus Servies</f:facet>
+                    <h:outputText value="#{e.type_of_servies}"/>
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">No Of Seats</f:facet>
+                    <h:outputText value="#{e.no_of_seat}"/>
+                </h:column>
+                
+                    <h:column>
+                    <f:facet name="header">Bus Status</f:facet>
+                    <h:outputText value="#{e.bus_status}"/>
+                </h:column>
+                
+        </h:dataTable>
+        
+        </h:form>
+	</h:body>
+</html>

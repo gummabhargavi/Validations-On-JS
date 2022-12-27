@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<h:body>
+   <h1>Create Bus</h1>
+   <h:form>
+     Bus No :
+     <h:inputText value="#{bus.bus_no}" id="bus_no"/> <br/><br/>
+     Bus Type :
+     <h:inputText value="#{bus.type_of_bus}" /> <br/><br/>
+     ServiesType :
+     <h:inputText value="#{bus.type_of_servies}" /> <br/><br/>
+     NoOfSeats :
+     <h:inputText value="#{bus.no_of_seat}" />  <br/><br/>
+     Busstatus :
+     <h:inputText value="#{bus.bus_status}" /> <br/><br/>
+     
+     <h:commandButton value="Save" action="#{busDAO.addBus(bus)}" />
+       
+   </h:form>
+</h:body>
+</html>
